@@ -18,7 +18,7 @@ class Clear():
       clr = {}
       for areas in cfg.channels:
         if areas['Name'] not in clr:
-          clr[areas['Name']] = {'encounter': [], 'messageID': [], 'listID': []}
+          clr[areas['Name']] = {'encounter': [], 'isIV': [], 'messageID': [], 'listID': []}
 
     print("\n" + colored("    INFO:", 'cyan') + " Starte CleanUp....................................")
     time.sleep(1)

@@ -67,7 +67,7 @@ class Sql():
     #Abfragen der Daten aus der Datenbank
     if modul == "0er":
 
-      cursor.execute("SELECT p.encounter_id,s.calc_endminsec,p.pokemon_id,p.individual_attack,p.individual_defense,p.individual_stamina,p.disappear_time,p.cp,p.cp_multiplier,p.move_1,p.move_2,p.gender,p.longitude,p.latitude,p.form,p.costume,p.weather_boosted_condition FROM pokemon p LEFT JOIN trs_spawn s ON p.spawnpoint_id = s.spawnpoint where individual_attack IS NOT NULL AND disappear_time > utc_timestamp() ORDER BY " + pokemon_sort + ", round(((`individual_attack` + `individual_defense` + `individual_stamina` ) / 45) *100) DESC, disappear_time DESC")
+      cursor.execute("SELECT p.encounter_id,s.calc_endminsec,p.pokemon_id,p.individual_attack,p.individual_defense,p.individual_stamina,p.disappear_time,p.cp,p.cp_multiplier,p.move_1,p.move_2,p.gender,p.longitude,p.latitude,p.form,p.costume,p.weather_boosted_condition FROM pokemon p LEFT JOIN trs_spawn s ON p.spawnpoint_id = s.spawnpoint WHERE disappear_time > utc_timestamp() ORDER BY " + pokemon_sort + ", round(((`individual_attack` + `individual_defense` + `individual_stamina` ) / 45) *100) DESC, disappear_time DESC")
       all = list(cursor.fetchall())
       i = 0
       try:

@@ -9,16 +9,17 @@ from termcolor import colored
 
 class sendMessage():
   
-  message = ""
   bot = ""
   overview_old = {}
   channels = {}
   clear = {}
+  lengh = {}
   last_encounter_id = []
   list_output = []
   overviewId = 0
   chatID = 0
   isfile = 0
+  noiv = 0
 
   # check config file
   def my_config(self,channels):
@@ -27,7 +28,7 @@ class sendMessage():
       if not os.path.exists(areas['Name']):
         os.mkdir(areas['Name'])
       if areas['Name'] not in self.clear:
-        self.clear[areas['Name']] = {'encounter': [], 'messageID': [], 'listID': []}
+        self.clear[areas['Name']] = {'encounter': [], 'isIV': [], 'messageID': [], 'listID': []}
       
       if not os.path.isfile(areas['Name']+"/iv-werte.txt"):
         print(colored("   ERROR:", 'red') + " file " + colored("iv-werte.txt", 'yellow') + " in folder " + colored(str(areas['Name']), 'yellow') + " does not exist!")
@@ -48,13 +49,28 @@ class sendMessage():
     with open(filename, 'w') as data:
       json.dump(self.clear, data, indent=4)
 
+  def change(self,bolt_line,normal_line,encounter,latitude,longitude,ChatName,ChatId,messID,pos):
+    try:
+      self.bot.delete_message(ChatId,messID)
+    except:
+      print(colored("   ERROR:", 'red') + " NonIV Venue konnte nicht gelöscht werden")
+    try:
+      id = self.bot.send_venue(ChatId,latitude,longitude,bolt_line,normal_line,disable_notification=True)
+      self.clear[ChatName]['messageID'][pos] = id.message_id
+      self.clear[ChatName]['isIV'][pos] = 1
+      self.write_json(self.clear)
+      print(colored(" SUCCESS:", 'green') + " encounter " + colored(str(encounter) + " wurde zu IV", 'yellow'))
+    except:
+      print(colored("   ERROR:", 'red') + " encounter " + str(encounter) + " wurde zu IV und konnte nicht erneut versendet werden")
+
   # send venue messages
-  def send(self,bolt_line,normal_line,encounter,latitude,longitude,ChatName,ChatId):
+  def send(self,bolt_line,normal_line,encounter,latitude,longitude,ChatName,ChatId,isIV):
     try:
       id = self.bot.send_venue(ChatId,latitude,longitude,bolt_line,normal_line,disable_notification=True)
       self.list_output.append(encounter)
       self.clear[ChatName]['messageID'].append(id.message_id)
       self.clear[ChatName]['encounter'].append(encounter)
+      self.clear[ChatName]['isIV'].append(isIV)
       self.write_json(self.clear)
       print(colored(" SUCCESS:", 'green') + " Sende encounter " + str(encounter) + " in " + str(ChatName))
       return id.message_id
@@ -62,10 +78,17 @@ class sendMessage():
       print(colored("   ERROR:", 'red') + " encounter " + str(encounter) + " konnte nicht versendet werden")
   
   # send overview message
-  def sendOverview(self,message,scanned,new_pokemon,old_pokemon):
+  def sendOverview(self,message,new_pokemon,old_pokemon):
     for areas in self.channels:
+      if areas['Name'] not in message:
+        message[areas['Name']] = ""
+      if areas['Name'] not in new_pokemon:
+        new_pokemon[areas['Name']] = 0
+      if areas['Name'] not in old_pokemon:
+        old_pokemon[areas['Name']] = 0
+      
       self.chatID = areas['chat_id']
-      lengh = len(message[areas['Name']]) - len(self.overview_old[areas['Name']])
+      self.lengh[areas['Name']] = len(message[areas['Name']]) - len(self.overview_old[areas['Name']])
 
       if not message[areas['Name']] and self.overview_old[areas['Name']]:
         try:
@@ -77,7 +100,7 @@ class sendMessage():
           print(colored("   ERROR:", 'red') + " Overview in " + areas['Name'] + " konnte nicht entfernt werden")
       else:
         if not message[areas['Name']] == self.overview_old[areas['Name']]:
-          if (len(message[areas['Name']]) <= len(self.overview_old[areas['Name']]) and new_pokemon[areas['Name']] == old_pokemon[areas['Name']]) or (len(message[areas['Name']]) > len(self.overview_old[areas['Name']]) and lengh == 1):
+          if (len(message[areas['Name']]) <= len(self.overview_old[areas['Name']]) and new_pokemon[areas['Name']] == old_pokemon[areas['Name']]) or (len(message[areas['Name']]) > len(self.overview_old[areas['Name']]) and self.lengh[areas['Name']] == 1):
             try:
               self.bot.edit_message_text(message[areas['Name']],chat_id=self.chatID, message_id=self.clear[areas['Name']]['listID'], parse_mode='HTML',disable_web_page_preview=True) ##Nachricht
               self.overview_old[areas['Name']] = message[areas['Name']]
@@ -110,9 +133,8 @@ class sendMessage():
    
   # clear channels
   def clearOutputList(self,encounter):
-    i = 0
     now = datetime.datetime.now()
-    print(colored("    INFO:", 'cyan') + " Checke Outputliste " + now.strftime("%H:%M:%S") + ", Total Spawns " + str(len(self.last_encounter_id)) + " (" + str(len(self.list_output)) + " gemeldet)")
+    print(colored("    INFO:", 'cyan') + " Checke Outputliste " + now.strftime("%H:%M:%S") + ", Total Spawns " + str(len(self.last_encounter_id)) + " (davon noiv: " + str(self.noiv) + ", gemeldet: " + str(len(self.list_output)) + ")")
 
     for areas in self.channels:
       for encount in self.clear[areas['Name']]['encounter']:
@@ -122,11 +144,11 @@ class sendMessage():
             self.bot.delete_message(areas['ivchat_id'],self.clear[areas['Name']]['messageID'][index])
             self.clear[areas['Name']]['messageID'].__delitem__(index)
             self.clear[areas['Name']]['encounter'].__delitem__(index)
+            self.clear[areas['Name']]['isIV'].__delitem__(index)
             self.list_output.remove(encount)
             print(colored(" SUCCESS:", 'green') + " Entferne encounter " + str(encount) + " in " + areas['Name'])
           except:
             print(colored("   ERROR:", 'red') + " encounter " + str(encount) + " in " + areas['Name'] + " konnte nicht entfernt werden")
-        i +=1
 
       self.write_json(self.clear)
 
