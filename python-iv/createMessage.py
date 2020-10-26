@@ -30,7 +30,7 @@ class createMessage():
 
         # define variables from Sql result
         name = self.getPokemon(Sql.pokemon_id[i],cfg.language)
-        verify = " \u2705 " if not Sql.calc_endminsec[i] == None else " \u2754"
+        verify = " \u2714 " if not Sql.calc_endminsec[i] == None else " \u2754"
         form = self.getForm(Sql.form[i],cfg.language)
         costume = self.getCostume(Sql.costume[i],cfg.language)
         zeit = Sql.disappear_time[i]
