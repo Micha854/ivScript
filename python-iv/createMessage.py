@@ -89,6 +89,10 @@ class createMessage():
           bolt_line = bolt_line_none
           normal_line = normal_line_none
 
+        # logging perfect pokemon
+        if isIV and iv == 100 and not encounter in send.list_output:
+          send.log100("Found Pokemon at " + str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + ": " + str(name) + "(" + str(iv) + "%) " + str(Sql.cp[i]) + "WP" + " ending " + str(zeit.strftime("%H:%M:%S")) + " encounter_id " + str(encounter) + "\n")
+
         for areas in cfg.channels:
           if areas['Name'] not in overview:
             overview[areas['Name']] = ""
@@ -107,10 +111,6 @@ class createMessage():
           checkIV = self.getIV(Sql.pokemon_id[i],areas['Name'])
           checkLevel = self.getLeveFromFile(Sql.pokemon_id[i],areas['Name'])
           checkMode = self.getModeFromFile(Sql.pokemon_id[i],areas['Name'])
-
-          # logging perfect pokemon
-          if isIV and iv == 100 and not encounter in send.list_output:
-            send.log100("Found Pokemon at " + str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + ": " + str(name) + "(" + str(iv) + "%) " + str(Sql.cp[i]) + "WP" + " ending " + str(zeit.strftime("%H:%M:%S")) + " encounter_id " + str(encounter) + "\n")
 
           # update overview
           if send.clear[areas['Name']]['encounter'].__contains__(encounter):
@@ -134,7 +134,6 @@ class createMessage():
             old_pokemon[areas['Name']] +=1
 
           # create overview
-          #elif iv == 300 and (name == 'Rattfratz') and isIn == True:
           elif ((((iv >= checkIV or level >= checkLevel) and not checkMode and not iv == 300) or ((iv >= checkIV and level >= checkLevel) and checkMode and not iv == 300) or (iv == 0 and areas['nuller'] == True) or (checkIV == 300)) and isIn == True):
             id = send.send(bolt_line,normal_line,encounter,Sql.latitude[i],Sql.longitude[i],areas['Name'],areas['ivchat_id'],isIV)
             
