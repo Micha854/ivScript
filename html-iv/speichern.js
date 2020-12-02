@@ -654,11 +654,38 @@ function showHint(str) {
     str += document.getElementById("Id647").value + ",";
     str += document.getElementById("Id648").value + ",";
     str += document.getElementById("Id649").value + ",";
+    str += document.getElementById("Id650").value + ",";
+    str += document.getElementById("Id651").value + ",";
+    str += document.getElementById("Id652").value + ",";
+    str += document.getElementById("Id653").value + ",";
+    str += document.getElementById("Id654").value + ",";
+    str += document.getElementById("Id655").value + ",";
+    str += document.getElementById("Id656").value + ",";
+    str += document.getElementById("Id657").value + ",";
+    str += document.getElementById("Id658").value + ",";
+    str += document.getElementById("Id659").value + ",";
+    str += document.getElementById("Id660").value + ",";
+    str += document.getElementById("Id661").value + ",";
+    str += document.getElementById("Id662").value + ",";
+    str += document.getElementById("Id663").value + ",";
+
+    str += document.getElementById("Id667").value + ",";
+    str += document.getElementById("Id668").value + ",";
+
+    str += document.getElementById("Id677").value + ",";
+    str += document.getElementById("Id678").value + ",";
+
+    str += document.getElementById("Id707").value + ",";
+    str += document.getElementById("Id714").value + ",";
+    str += document.getElementById("Id715").value + ",";
+
     str += document.getElementById("Id808").value + ",";
     str += document.getElementById("Id809").value + ",";
     str += document.getElementById("Id862").value + ",";
     str += document.getElementById("Id863").value + ",";
-    str += document.getElementById("Id865").value
+    str += document.getElementById("Id865").value + ",";
+    str += document.getElementById("Id866").value + ",";
+    str += document.getElementById("Id867").value
         xmlhttp.open("GET", "gethint.php?q=" + str, true);
         xmlhttp.send();
 	alert("IV gespeichert");
@@ -1312,11 +1339,38 @@ function showHint(str) {
     str += document.getElementById("Level647").value + ",";
     str += document.getElementById("Level648").value + ",";
     str += document.getElementById("Level649").value + ",";
+    str += document.getElementById("Level650").value + ",";
+    str += document.getElementById("Level651").value + ",";
+    str += document.getElementById("Level652").value + ",";
+    str += document.getElementById("Level653").value + ",";
+    str += document.getElementById("Level654").value + ",";
+    str += document.getElementById("Level655").value + ",";
+    str += document.getElementById("Level656").value + ",";
+    str += document.getElementById("Level657").value + ",";
+    str += document.getElementById("Level658").value + ",";
+    str += document.getElementById("Level659").value + ",";
+    str += document.getElementById("Level660").value + ",";
+    str += document.getElementById("Level661").value + ",";
+    str += document.getElementById("Level662").value + ",";
+    str += document.getElementById("Level663").value + ",";
+
+    str += document.getElementById("Level667").value + ",";
+    str += document.getElementById("Level668").value + ",";
+
+    str += document.getElementById("Level677").value + ",";
+    str += document.getElementById("Level678").value + ",";
+
+    str += document.getElementById("Level707").value + ",";
+    str += document.getElementById("Level714").value + ",";
+    str += document.getElementById("Level715").value + ",";
+
     str += document.getElementById("Level808").value + ",";
     str += document.getElementById("Level809").value + ",";
     str += document.getElementById("Level862").value + ",";
     str += document.getElementById("Level863").value + ",";
-    str += document.getElementById("Level865").value
+    str += document.getElementById("Level865").value + ",";
+    str += document.getElementById("Level866").value + ",";
+    str += document.getElementById("Level867").value
         xmlhttp.open("GET", "speicherLevel.php?q=" + str, true);
         xmlhttp.send();  
 	alert("Level gespeichert");
@@ -1969,11 +2023,38 @@ function showHint(str) {
     str += document.getElementById("mode647").value + ",";
     str += document.getElementById("mode648").value + ",";
     str += document.getElementById("mode649").value + ",";
+    str += document.getElementById("mode650").value + ",";
+    str += document.getElementById("mode651").value + ",";
+    str += document.getElementById("mode652").value + ",";
+    str += document.getElementById("mode653").value + ",";
+    str += document.getElementById("mode654").value + ",";
+    str += document.getElementById("mode655").value + ",";
+    str += document.getElementById("mode656").value + ",";
+    str += document.getElementById("mode657").value + ",";
+    str += document.getElementById("mode658").value + ",";
+    str += document.getElementById("mode659").value + ",";
+    str += document.getElementById("mode660").value + ",";
+    str += document.getElementById("mode661").value + ",";
+    str += document.getElementById("mode662").value + ",";
+    str += document.getElementById("mode663").value + ",";
+
+    str += document.getElementById("mode667").value + ",";
+    str += document.getElementById("mode668").value + ",";
+
+    str += document.getElementById("mode677").value + ",";
+    str += document.getElementById("mode678").value + ",";
+
+    str += document.getElementById("mode707").value + ",";
+    str += document.getElementById("mode714").value + ",";
+    str += document.getElementById("mode715").value + ",";
+
     str += document.getElementById("mode808").value + ",";
     str += document.getElementById("mode809").value + ",";
     str += document.getElementById("mode862").value + ",";
     str += document.getElementById("mode863").value + ",";
-    str += document.getElementById("mode865").value;
+    str += document.getElementById("mode865").value + ",";
+    str += document.getElementById("mode866").value + ",";
+    str += document.getElementById("mode867").value;
     xmlhttp.open("GET", "speicherMode.php?q=" + str, true);
     xmlhttp.send();  
 

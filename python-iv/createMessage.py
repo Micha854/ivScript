@@ -108,6 +108,10 @@ class createMessage():
           checkLevel = self.getLeveFromFile(Sql.pokemon_id[i],areas['Name'])
           checkMode = self.getModeFromFile(Sql.pokemon_id[i],areas['Name'])
 
+          # logging perfect pokemon
+          if isIV and iv == 100 and not encounter in send.list_output:
+            send.log100("Found Pokemon at " + str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + ": " + str(name) + "(" + str(iv) + "%) " + str(Sql.cp[i]) + "WP" + " ending " + str(zeit.strftime("%H:%M:%S")) + " encounter_id " + str(encounter) + "\n")
+
           # update overview
           if send.clear[areas['Name']]['encounter'].__contains__(encounter):
             id = send.clear[areas['Name']]['encounter'].index(encounter)
@@ -147,7 +151,7 @@ class createMessage():
             new_pokemon[areas['Name']] +=1
         
         i +=1
-        if not encounter in send.last_encounter_id:
+        if not encounter in send.last_encounter_id and isIV:
           # add encounter to be skipped
           send.last_encounter_id.append(encounter)
       send.noiv = noIV

@@ -49,6 +49,13 @@ class sendMessage():
     with open(filename, 'w') as data:
       json.dump(self.clear, data, indent=4)
 
+  # logging perfect pokemon
+  def log100(self, write, filename='log.txt'):
+    f = open(filename, "a")
+    f.writelines(write)
+    f.close()
+    print(colored("    INFO:", 'cyan') + colored(" Logging perfect pokemon", 'yellow'))
+
   def change(self,bolt_line,normal_line,encounter,latitude,longitude,ChatName,ChatId,messID,pos):
     try:
       self.bot.delete_message(ChatId,messID)

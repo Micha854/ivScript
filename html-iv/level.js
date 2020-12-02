@@ -653,10 +653,36 @@ function LoadLevelFile() {
     document.getElementById("Level647").value = arrLines[646];
     document.getElementById("Level648").value = arrLines[647];
     document.getElementById("Level649").value = arrLines[648];
+    document.getElementById("Level650").value = arrLines[649];
+    document.getElementById("Level651").value = arrLines[650];
+    document.getElementById("Level652").value = arrLines[651];
+    document.getElementById("Level653").value = arrLines[652];
+    document.getElementById("Level654").value = arrLines[653];
+    document.getElementById("Level655").value = arrLines[654];
+    document.getElementById("Level656").value = arrLines[655];
+    document.getElementById("Level657").value = arrLines[656];
+    document.getElementById("Level658").value = arrLines[657];
+    document.getElementById("Level659").value = arrLines[658];
+    document.getElementById("Level660").value = arrLines[659];
+    document.getElementById("Level661").value = arrLines[660];
+    document.getElementById("Level662").value = arrLines[661];
+    document.getElementById("Level663").value = arrLines[662];
 
-    document.getElementById("Level808").value = arrLines[649];
-    document.getElementById("Level809").value = arrLines[650];
-    document.getElementById("Level862").value = arrLines[651];
-    document.getElementById("Level863").value = arrLines[652];
-    document.getElementById("Level865").value = arrLines[653];
+    document.getElementById("Level667").value = arrLines[663];
+    document.getElementById("Level668").value = arrLines[664];
+
+    document.getElementById("Level677").value = arrLines[665];
+    document.getElementById("Level678").value = arrLines[666];
+
+    document.getElementById("Level707").value = arrLines[667];
+    document.getElementById("Level714").value = arrLines[668];
+    document.getElementById("Level715").value = arrLines[669];
+
+    document.getElementById("Level808").value = arrLines[670];
+    document.getElementById("Level809").value = arrLines[671];
+    document.getElementById("Level862").value = arrLines[672];
+    document.getElementById("Level863").value = arrLines[673];
+    document.getElementById("Level865").value = arrLines[674];
+    document.getElementById("Level866").value = arrLines[675];
+    document.getElementById("Level867").value = arrLines[676];
 }

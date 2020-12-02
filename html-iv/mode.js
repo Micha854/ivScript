@@ -653,11 +653,37 @@ function LoadModeFile() {
     document.getElementById("mode647").value = arrLines[646];
     document.getElementById("mode648").value = arrLines[647];
     document.getElementById("mode649").value = arrLines[648];
+    document.getElementById("mode650").value = arrLines[649];
+    document.getElementById("mode651").value = arrLines[650];
+    document.getElementById("mode652").value = arrLines[651];
+    document.getElementById("mode653").value = arrLines[652];
+    document.getElementById("mode654").value = arrLines[653];
+    document.getElementById("mode655").value = arrLines[654];
+    document.getElementById("mode656").value = arrLines[655];
+    document.getElementById("mode657").value = arrLines[656];
+    document.getElementById("mode658").value = arrLines[657];
+    document.getElementById("mode659").value = arrLines[658];
+    document.getElementById("mode660").value = arrLines[659];
+    document.getElementById("mode661").value = arrLines[660];
+    document.getElementById("mode662").value = arrLines[661];
+    document.getElementById("mode663").value = arrLines[662];
 
-    document.getElementById("mode808").value = arrLines[649];
-    document.getElementById("mode809").value = arrLines[650];
-    document.getElementById("mode862").value = arrLines[651];
-    document.getElementById("mode863").value = arrLines[652];
-    document.getElementById("mode865").value = arrLines[653];
+    document.getElementById("mode667").value = arrLines[663];
+    document.getElementById("mode668").value = arrLines[664];
+
+    document.getElementById("mode677").value = arrLines[665];
+    document.getElementById("mode678").value = arrLines[666];
+
+    document.getElementById("mode707").value = arrLines[667];
+    document.getElementById("mode714").value = arrLines[668];
+    document.getElementById("mode715").value = arrLines[669];
+
+    document.getElementById("mode808").value = arrLines[670];
+    document.getElementById("mode809").value = arrLines[671];
+    document.getElementById("mode862").value = arrLines[672];
+    document.getElementById("mode863").value = arrLines[673];
+    document.getElementById("mode865").value = arrLines[674];
+    document.getElementById("mode866").value = arrLines[675];
+    document.getElementById("mode867").value = arrLines[676];
 }
 
