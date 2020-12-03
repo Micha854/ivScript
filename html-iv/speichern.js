@@ -1,6 +1,6 @@
 function showHint(str) {
     if (str.length == 0) {
-        document.getElementById("Id648").innerHTML = "";
+        document.getElementById("Id717").innerHTML = "";
         return;
     } 
         var xmlhttp = new XMLHttpRequest();
@@ -668,24 +668,61 @@ function showHint(str) {
     str += document.getElementById("Id661").value + ",";
     str += document.getElementById("Id662").value + ",";
     str += document.getElementById("Id663").value + ",";
-
+    str += document.getElementById("Id664").value + ",";
+    str += document.getElementById("Id665").value + ",";
+    str += document.getElementById("Id666").value + ",";
     str += document.getElementById("Id667").value + ",";
     str += document.getElementById("Id668").value + ",";
-
+    str += document.getElementById("Id669").value + ",";
+    str += document.getElementById("Id670").value + ",";
+    str += document.getElementById("Id671").value + ",";
+    str += document.getElementById("Id672").value + ",";
+    str += document.getElementById("Id673").value + ",";
+    str += document.getElementById("Id674").value + ",";
+    str += document.getElementById("Id675").value + ",";
+    str += document.getElementById("Id676").value + ",";
     str += document.getElementById("Id677").value + ",";
     str += document.getElementById("Id678").value + ",";
-
+    str += document.getElementById("Id679").value + ",";
+    str += document.getElementById("Id680").value + ",";
+    str += document.getElementById("Id681").value + ",";
+    str += document.getElementById("Id682").value + ",";
+    str += document.getElementById("Id683").value + ",";
+    str += document.getElementById("Id684").value + ",";
+    str += document.getElementById("Id685").value + ",";
+    str += document.getElementById("Id686").value + ",";
+    str += document.getElementById("Id687").value + ",";
+    str += document.getElementById("Id688").value + ",";
+    str += document.getElementById("Id689").value + ",";
+    str += document.getElementById("Id690").value + ",";
+    str += document.getElementById("Id691").value + ",";
+    str += document.getElementById("Id692").value + ",";
+    str += document.getElementById("Id693").value + ",";
+    str += document.getElementById("Id694").value + ",";
+    str += document.getElementById("Id695").value + ",";
+    str += document.getElementById("Id696").value + ",";
+    str += document.getElementById("Id697").value + ",";
+    str += document.getElementById("Id698").value + ",";
+    str += document.getElementById("Id699").value + ",";
+    str += document.getElementById("Id700").value + ",";
+    str += document.getElementById("Id701").value + ",";
+    str += document.getElementById("Id702").value + ",";
+    str += document.getElementById("Id703").value + ",";
+    str += document.getElementById("Id704").value + ",";
+    str += document.getElementById("Id705").value + ",";
+    str += document.getElementById("Id706").value + ",";
     str += document.getElementById("Id707").value + ",";
+    str += document.getElementById("Id708").value + ",";
+    str += document.getElementById("Id709").value + ",";
+    str += document.getElementById("Id710").value + ",";
+    str += document.getElementById("Id711").value + ",";
+    str += document.getElementById("Id712").value + ",";
+    str += document.getElementById("Id713").value + ",";
     str += document.getElementById("Id714").value + ",";
     str += document.getElementById("Id715").value + ",";
-
-    str += document.getElementById("Id808").value + ",";
-    str += document.getElementById("Id809").value + ",";
-    str += document.getElementById("Id862").value + ",";
-    str += document.getElementById("Id863").value + ",";
-    str += document.getElementById("Id865").value + ",";
-    str += document.getElementById("Id866").value + ",";
-    str += document.getElementById("Id867").value
+    str += document.getElementById("Id716").value + ",";
+    str += document.getElementById("Id717").value + ",";
+    str += document.getElementById("Id718").value
         xmlhttp.open("GET", "gethint.php?q=" + str, true);
         xmlhttp.send();
 	alert("IV gespeichert");
@@ -1353,24 +1390,61 @@ function showHint(str) {
     str += document.getElementById("Level661").value + ",";
     str += document.getElementById("Level662").value + ",";
     str += document.getElementById("Level663").value + ",";
-
+    str += document.getElementById("Level664").value + ",";
+    str += document.getElementById("Level665").value + ",";
+    str += document.getElementById("Level666").value + ",";
     str += document.getElementById("Level667").value + ",";
     str += document.getElementById("Level668").value + ",";
-
+    str += document.getElementById("Level669").value + ",";
+    str += document.getElementById("Level670").value + ",";
+    str += document.getElementById("Level671").value + ",";
+    str += document.getElementById("Level672").value + ",";
+    str += document.getElementById("Level673").value + ",";
+    str += document.getElementById("Level674").value + ",";
+    str += document.getElementById("Level675").value + ",";
+    str += document.getElementById("Level676").value + ",";
     str += document.getElementById("Level677").value + ",";
     str += document.getElementById("Level678").value + ",";
-
+    str += document.getElementById("Level679").value + ",";
+    str += document.getElementById("Level680").value + ",";
+    str += document.getElementById("Level681").value + ",";
+    str += document.getElementById("Level682").value + ",";
+    str += document.getElementById("Level683").value + ",";
+    str += document.getElementById("Level684").value + ",";
+    str += document.getElementById("Level685").value + ",";
+    str += document.getElementById("Level686").value + ",";
+    str += document.getElementById("Level687").value + ",";
+    str += document.getElementById("Level688").value + ",";
+    str += document.getElementById("Level689").value + ",";
+    str += document.getElementById("Level690").value + ",";
+    str += document.getElementById("Level691").value + ",";
+    str += document.getElementById("Level692").value + ",";
+    str += document.getElementById("Level693").value + ",";
+    str += document.getElementById("Level694").value + ",";
+    str += document.getElementById("Level695").value + ",";
+    str += document.getElementById("Level696").value + ",";
+    str += document.getElementById("Level697").value + ",";
+    str += document.getElementById("Level698").value + ",";
+    str += document.getElementById("Level699").value + ",";
+    str += document.getElementById("Level700").value + ",";
+    str += document.getElementById("Level701").value + ",";
+    str += document.getElementById("Level702").value + ",";
+    str += document.getElementById("Level703").value + ",";
+    str += document.getElementById("Level704").value + ",";
+    str += document.getElementById("Level705").value + ",";
+    str += document.getElementById("Level706").value + ",";
     str += document.getElementById("Level707").value + ",";
+    str += document.getElementById("Level708").value + ",";
+    str += document.getElementById("Level709").value + ",";
+    str += document.getElementById("Level710").value + ",";
+    str += document.getElementById("Level711").value + ",";
+    str += document.getElementById("Level712").value + ",";
+    str += document.getElementById("Level713").value + ",";
     str += document.getElementById("Level714").value + ",";
     str += document.getElementById("Level715").value + ",";
-
-    str += document.getElementById("Level808").value + ",";
-    str += document.getElementById("Level809").value + ",";
-    str += document.getElementById("Level862").value + ",";
-    str += document.getElementById("Level863").value + ",";
-    str += document.getElementById("Level865").value + ",";
-    str += document.getElementById("Level866").value + ",";
-    str += document.getElementById("Level867").value
+    str += document.getElementById("Level716").value + ",";
+    str += document.getElementById("Level717").value + ",";
+    str += document.getElementById("Level718").value
         xmlhttp.open("GET", "speicherLevel.php?q=" + str, true);
         xmlhttp.send();  
 	alert("Level gespeichert");
@@ -2037,27 +2111,62 @@ function showHint(str) {
     str += document.getElementById("mode661").value + ",";
     str += document.getElementById("mode662").value + ",";
     str += document.getElementById("mode663").value + ",";
-
+    str += document.getElementById("mode664").value + ",";
+    str += document.getElementById("mode665").value + ",";
+    str += document.getElementById("mode666").value + ",";
     str += document.getElementById("mode667").value + ",";
     str += document.getElementById("mode668").value + ",";
-
+    str += document.getElementById("mode669").value + ",";
+    str += document.getElementById("mode670").value + ",";
+    str += document.getElementById("mode671").value + ",";
+    str += document.getElementById("mode672").value + ",";
+    str += document.getElementById("mode673").value + ",";
+    str += document.getElementById("mode674").value + ",";
+    str += document.getElementById("mode675").value + ",";
+    str += document.getElementById("mode676").value + ",";
     str += document.getElementById("mode677").value + ",";
     str += document.getElementById("mode678").value + ",";
-
+    str += document.getElementById("mode679").value + ",";
+    str += document.getElementById("mode680").value + ",";
+    str += document.getElementById("mode681").value + ",";
+    str += document.getElementById("mode682").value + ",";
+    str += document.getElementById("mode683").value + ",";
+    str += document.getElementById("mode684").value + ",";
+    str += document.getElementById("mode685").value + ",";
+    str += document.getElementById("mode686").value + ",";
+    str += document.getElementById("mode687").value + ",";
+    str += document.getElementById("mode688").value + ",";
+    str += document.getElementById("mode689").value + ",";
+    str += document.getElementById("mode690").value + ",";
+    str += document.getElementById("mode691").value + ",";
+    str += document.getElementById("mode692").value + ",";
+    str += document.getElementById("mode693").value + ",";
+    str += document.getElementById("mode694").value + ",";
+    str += document.getElementById("mode695").value + ",";
+    str += document.getElementById("mode696").value + ",";
+    str += document.getElementById("mode697").value + ",";
+    str += document.getElementById("mode698").value + ",";
+    str += document.getElementById("mode699").value + ",";
+    str += document.getElementById("mode700").value + ",";
+    str += document.getElementById("mode701").value + ",";
+    str += document.getElementById("mode702").value + ",";
+    str += document.getElementById("mode703").value + ",";
+    str += document.getElementById("mode704").value + ",";
+    str += document.getElementById("mode705").value + ",";
+    str += document.getElementById("mode706").value + ",";
     str += document.getElementById("mode707").value + ",";
+    str += document.getElementById("mode708").value + ",";
+    str += document.getElementById("mode709").value + ",";
+    str += document.getElementById("mode710").value + ",";
+    str += document.getElementById("mode711").value + ",";
+    str += document.getElementById("mode712").value + ",";
+    str += document.getElementById("mode713").value + ",";
     str += document.getElementById("mode714").value + ",";
     str += document.getElementById("mode715").value + ",";
-
-    str += document.getElementById("mode808").value + ",";
-    str += document.getElementById("mode809").value + ",";
-    str += document.getElementById("mode862").value + ",";
-    str += document.getElementById("mode863").value + ",";
-    str += document.getElementById("mode865").value + ",";
-    str += document.getElementById("mode866").value + ",";
-    str += document.getElementById("mode867").value;
-    xmlhttp.open("GET", "speicherMode.php?q=" + str, true);
-    xmlhttp.send();  
-
+    str += document.getElementById("mode716").value + ",";
+    str += document.getElementById("mode717").value + ",";
+    str += document.getElementById("mode718").value
+        xmlhttp.open("GET", "speicherMode.php?q=" + str, true);
+        xmlhttp.send();  
     alert("Mode Gespeichert");
-    
 }

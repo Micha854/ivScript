@@ -35,6 +35,8 @@ class createMessage():
         costume = self.getCostume(Sql.costume[i],cfg.language)
         zeit = Sql.disappear_time[i]
         zeit = zeit + datetime.timedelta(hours=gmt)
+        last_mod = Sql.last_modified[i]
+        last_mod = last_mod + datetime.timedelta(hours=gmt)
         weather_id = Sql.weather_boosted_condition[i]
 
         if Sql.individual_attack[i] is None:
@@ -91,7 +93,12 @@ class createMessage():
 
         # logging perfect pokemon
         if isIV and iv == 100 and not encounter in send.list_output:
-          send.log100("Found Pokemon at " + str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + ": " + str(name) + "(" + str(iv) + "%) " + str(Sql.cp[i]) + "WP" + " ending " + str(zeit.strftime("%H:%M:%S")) + " encounter_id " + str(encounter) + "\n")
+          log_id    = str(Sql.pokemon_id[i]) + "  " 
+          log_name  = str(name) + "               "
+          log_iv    = str(iv) + "  "
+          log_wp    = str(Sql.cp[i]) + "   "
+          log_level = str(level) + " "
+          send.log100("Found PokemonID " + log_id[:3] + "   on " + str(last_mod.strftime('%Y-%m-%d %H:%M:%S')) + ":   " + log_name[:15] + "(" + log_iv[:3] + "%) " + log_wp[:4] + " WP" + "   Level " + log_level[:2] + "   ending " + str(zeit.strftime("%H:%M:%S")) + "   encounter_id " + str(encounter) + "\n", name)
 
         for areas in cfg.channels:
           if areas['Name'] not in overview:
@@ -159,21 +166,6 @@ class createMessage():
     except Exception as e:
         outF = open("error.txt","w")
         ausgabe = "Passierte in der CreateMessage.py\n"
-        ausgabe += "encounter_id: " + str(Sql.encounter_id.__len__) + "\n"
-        ausgabe += "calc_endminsec: " + str(Sql.calc_endminsec.__len__) + "\n"
-        ausgabe += "pokemon_id: " + str(Sql.pokemon_id.__len__) + "\n"
-        ausgabe += "individual_attack: " + str(Sql.individual_attack.__len__) + "\n"
-        ausgabe += "individual_defense: " + str(Sql.individual_defense.__len__) + "\n"
-        ausgabe += "individual_stamina: " + str(Sql.individual_stamina.__len__) + "\n"
-        ausgabe += "disappear_time: " + str(Sql.disappear_time.__len__) + "\n"
-        ausgabe += "cp: " + str(Sql.cp.__len__) + "\n"
-        ausgabe += "cp_multiplier: " + str(Sql.cp_multiplier.__len__) + "\n"
-        ausgabe += "shortattack: " + str(Sql.shortattack.__len__) + "\n"
-        ausgabe += "loadattack: " + str(Sql.loadattack.__len__) + "\n"
-        ausgabe += "gender: " + str(Sql.gender.__len__) + "\n"
-        ausgabe += "longitude: " + str(Sql.longitude.__len__) + "\n"
-        ausgabe += "latitude: " + str(Sql.latitude.__len__) + "\n"
-        ausgabe += "Wert i = " + str(i) + "\n"
         outF.writelines(ausgabe + str(e))
         outF.close()
 

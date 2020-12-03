@@ -662,24 +662,61 @@ function setIV() {
     document.getElementById("Id661").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id662").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id663").value = document.getElementById("iv_allgemein").value;
-
+    document.getElementById("Id664").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id665").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id666").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id667").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id668").value = document.getElementById("iv_allgemein").value;
-
+    document.getElementById("Id669").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id670").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id671").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id672").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id673").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id674").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id675").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id676").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id677").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id678").value = document.getElementById("iv_allgemein").value;
-
+    document.getElementById("Id679").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id680").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id681").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id682").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id683").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id684").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id685").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id686").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id687").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id688").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id689").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id690").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id691").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id692").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id693").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id694").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id695").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id696").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id697").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id698").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id699").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id700").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id701").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id702").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id703").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id704").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id705").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id706").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id707").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id708").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id709").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id710").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id711").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id712").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id713").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id714").value = document.getElementById("iv_allgemein").value;
     document.getElementById("Id715").value = document.getElementById("iv_allgemein").value;
-
-    document.getElementById("Id808").value = document.getElementById("iv_allgemein").value;
-    document.getElementById("Id809").value = document.getElementById("iv_allgemein").value;
-    document.getElementById("Id862").value = document.getElementById("iv_allgemein").value;
-    document.getElementById("Id863").value = document.getElementById("iv_allgemein").value;
-    document.getElementById("Id865").value = document.getElementById("iv_allgemein").value;
-    document.getElementById("Id866").value = document.getElementById("iv_allgemein").value;
-    document.getElementById("Id867").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id716").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id717").value = document.getElementById("iv_allgemein").value;
+    document.getElementById("Id718").value = document.getElementById("iv_allgemein").value;
 }
 
 function setLevel() {
@@ -1346,24 +1383,61 @@ function setLevel() {
     document.getElementById("Level661").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level662").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level663").value = document.getElementById("level_allgemein").value;
-
+    document.getElementById("Level664").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level665").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level666").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level667").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level668").value = document.getElementById("level_allgemein").value;
-
+    document.getElementById("Level669").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level670").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level671").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level672").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level673").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level674").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level675").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level676").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level677").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level678").value = document.getElementById("level_allgemein").value;
-
+    document.getElementById("Level679").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level680").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level681").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level682").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level683").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level684").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level685").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level686").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level687").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level688").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level689").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level690").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level691").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level692").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level693").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level694").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level695").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level696").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level697").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level698").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level699").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level700").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level701").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level702").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level703").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level704").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level705").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level706").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level707").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level708").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level709").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level710").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level711").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level712").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level713").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level714").value = document.getElementById("level_allgemein").value;
     document.getElementById("Level715").value = document.getElementById("level_allgemein").value;
-
-    document.getElementById("Level808").value = document.getElementById("level_allgemein").value;
-    document.getElementById("Level809").value = document.getElementById("level_allgemein").value;
-    document.getElementById("Level862").value = document.getElementById("level_allgemein").value;
-    document.getElementById("Level863").value = document.getElementById("level_allgemein").value;
-    document.getElementById("Level865").value = document.getElementById("level_allgemein").value;
-    document.getElementById("Level866").value = document.getElementById("level_allgemein").value;
-    document.getElementById("Level867").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level716").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level717").value = document.getElementById("level_allgemein").value;
+    document.getElementById("Level718").value = document.getElementById("level_allgemein").value;
 }
 
 function setMode() {
@@ -2030,22 +2104,59 @@ function setMode() {
     document.getElementById("mode661").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode662").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode663").value = document.getElementById("modus_allgemein").value;
-
+    document.getElementById("mode664").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode665").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode666").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode667").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode668").value = document.getElementById("modus_allgemein").value;
-
+    document.getElementById("mode669").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode670").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode671").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode672").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode673").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode674").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode675").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode676").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode677").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode678").value = document.getElementById("modus_allgemein").value;
-
+    document.getElementById("mode679").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode680").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode681").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode682").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode683").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode684").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode685").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode686").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode687").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode688").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode689").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode690").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode691").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode692").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode693").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode694").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode695").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode696").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode697").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode698").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode699").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode700").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode701").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode702").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode703").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode704").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode705").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode706").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode707").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode708").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode709").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode710").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode711").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode712").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode713").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode714").value = document.getElementById("modus_allgemein").value;
     document.getElementById("mode715").value = document.getElementById("modus_allgemein").value;
-
-    document.getElementById("mode808").value = document.getElementById("modus_allgemein").value;
-    document.getElementById("mode809").value = document.getElementById("modus_allgemein").value;
-    document.getElementById("mode862").value = document.getElementById("modus_allgemein").value;
-    document.getElementById("mode863").value = document.getElementById("modus_allgemein").value;
-    document.getElementById("mode865").value = document.getElementById("modus_allgemein").value;
-    document.getElementById("mode866").value = document.getElementById("modus_allgemein").value;
-    document.getElementById("mode867").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode716").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode717").value = document.getElementById("modus_allgemein").value;
+    document.getElementById("mode718").value = document.getElementById("modus_allgemein").value;
 }
