@@ -128,14 +128,21 @@ class createMessage():
               id = send.change(bolt_line,normal_line,encounter,Sql.latitude[i],Sql.longitude[i],areas['Name'],areas['ivchat_id'],linkid,id)
 
             if cfg.sort_pokemon == True:
-              overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
-            elif iv == 300:
-              if trenner[areas['Name']] == 0:
-                overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
-                trenner[areas['Name']] = 1
-              overview[areas['Name']] += "<b><a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>" + str(highlight) + str(name) + str(getform) + str(getcostume) + "</a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
+              if iv == 300:
+                if trenner[areas['Name']] == 0:
+                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  trenner[areas['Name']] = 1
+                overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'></a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
+              else:
+                overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
             else:
-              overview[areas['Name']] += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
+              if iv == 300:
+                if trenner[areas['Name']] == 0:
+                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  trenner[areas['Name']] = 1
+                overview[areas['Name']] += "<b><a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>" + str(highlight) + str(name) + str(getform) + str(getcostume) + "</a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
+              else:
+                overview[areas['Name']] += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
             
             new_pokemon[areas['Name']] +=1
             old_pokemon[areas['Name']] +=1
@@ -145,14 +152,21 @@ class createMessage():
             id = send.send(bolt_line,normal_line,encounter,Sql.latitude[i],Sql.longitude[i],areas['Name'],areas['ivchat_id'],isIV)
             
             if cfg.sort_pokemon == True:
-              overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(id) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
-            elif iv == 300:
-              if trenner[areas['Name']] == 0:
-                overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
-                trenner[areas['Name']] = 1
-              overview[areas['Name']] += "<b><a href='" + areas['ivchat_url'] + "/" + str(id) + "'>" + str(highlight) + str(name) + str(getform) + str(getcostume) + "</a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
+              if iv == 300:
+                if trenner[areas['Name']] == 0:
+                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  trenner[areas['Name']] = 1
+                overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(id) + "'></a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
+              else:
+                overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(id) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
             else:
-              overview[areas['Name']] += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + areas['ivchat_url'] + "/" + str(id) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
+              if iv == 300:
+                if trenner[areas['Name']] == 0:
+                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  trenner[areas['Name']] = 1
+                overview[areas['Name']] += "<b><a href='" + areas['ivchat_url'] + "/" + str(id) + "'>" + str(highlight) + str(name) + str(getform) + str(getcostume) + "</a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
+              else:
+                overview[areas['Name']] += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + areas['ivchat_url'] + "/" + str(id) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
             
             new_pokemon[areas['Name']] +=1
         
@@ -175,6 +189,10 @@ class createMessage():
     list_string = f.read()
     list_string = list_string.split(',') 
     myiv = int(list_string[value-1]) 
+    try:
+      myiv = myiv
+    except:
+      myiv = 100
     return myiv
 
   ### get level
@@ -183,6 +201,10 @@ class createMessage():
     list_string = f.read()
     list_string = list_string.split(',') 
     mylevel = int(list_string[value-1])  
+    try:
+      mylevel = mylevel
+    except:
+      mylevel = 36
     return mylevel
 
   ### get mode
@@ -191,6 +213,10 @@ class createMessage():
     list_string = f.read()
     list_string = list_string.split(',') 
     mymode = int(list_string[value-1])
+    try:
+      mymode = mymode
+    except:
+      mymode = 0
     return mymode
 
   ### get pokemon name
