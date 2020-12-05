@@ -1,6 +1,6 @@
 <?php
 $q = $_REQUEST["q"];
-$myfile = fopen("/var/www/vhosts/shisha-drive.de/httpdocs/html-iv/py/mode-werte.txt", "w");
+$myfile = fopen("/var/www/mode-werte.txt", "w");
 fwrite($myfile, $q);
 fclose($myfile);
 

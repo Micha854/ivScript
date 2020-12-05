@@ -1,6 +1,6 @@
 import json
-import time
 import datetime
+from shapely.geometry import Point, Polygon
 
 class createMessage():
   iv = 0
@@ -8,52 +8,65 @@ class createMessage():
   mode = 0
 
   def create(self,Sql,send,sleep,cfg,gmt):
-    overview = ""
+    overview = {}
+    new_pokemon = {}
+    old_pokemon = {}
     i = 0
-    new_pokemon = 0
-    old_pokemon = 0
     id = 0
+    noIV = 0
+    trenner = {}
 
-    now = datetime.datetime.now()
-    print("####################==========\\ *** IV *** Update " + cfg.areaName + " " + now.strftime("%m/%d/%Y, %H:%M:%S") + " /==========####################\n")
+    # weather icons
+    weather_icon = {0: " ", 1: " \U0001F30C ", 2: " \U0001F327 ", 3: " \u2601 ", 4: " \u26C5 ", 5: " \U0001F32A ", 6: " \U0001F328 ", 7: " \U0001F32B "}
 
     try:
       for encounter in Sql.encounter_id:
-        name = self.getPokemon(Sql.pokemon_id[i],cfg.language)
-        verify = " \u2705 " if not Sql.calc_endminsec[i] == None else " \u2754"
-        angriff = Sql.individual_attack[i]
-        verteidigung = Sql.individual_defense[i]
-        leben = Sql.individual_stamina[i]
-        iv = round(((angriff + verteidigung + leben ) / 45) *100)
-        kurzattacke = self.getShortAttack(Sql.shortattack[i],cfg.language)
-        ladeattacke = self.getLoadAttack(Sql.loadattack[i],cfg.language)
-        cp_multiplier = Sql.cp_multiplier[i]
-        level = self.getLevel(cp_multiplier)
+        # Skip all known encounters that are not reported
+        if (encounter in send.last_encounter_id and not send.list_output.__contains__(encounter)):
+          if Sql.individual_attack[i] == None:
+            noIV += 1
+          i += 1
+          continue
 
+        # define variables from Sql result
+        name = self.getPokemon(Sql.pokemon_id[i],cfg.language)
+        verify = " \u2714 " if not Sql.calc_endminsec[i] == None else " \u2754"
         form = self.getForm(Sql.form[i],cfg.language)
         costume = self.getCostume(Sql.costume[i],cfg.language)
-
-        mode = self.mode
         zeit = Sql.disappear_time[i]
         zeit = zeit + datetime.timedelta(hours=gmt)
+        last_mod = Sql.last_modified[i]
+        last_mod = last_mod + datetime.timedelta(hours=gmt)
+        weather_id = Sql.weather_boosted_condition[i]
 
-        if form:
-          getform = "(" + form + ")"
+        if Sql.individual_attack[i] is None:
+          isIV = 0
+          iv = 300
+          noIV +=1
+          level = 0
+          angriff = ""
+          verteidigung = ""
+          leben = ""
+          kurzattacke = ""
+          ladeattacke = ""
+
         else:
-          getform = ""
+          isIV = 1
+          angriff = Sql.individual_attack[i]
+          verteidigung = Sql.individual_defense[i]
+          leben = Sql.individual_stamina[i]
+          iv = round(((angriff + verteidigung + leben ) / 45) *100)
+          kurzattacke = self.getShortAttack(Sql.shortattack[i],cfg.language)
+          ladeattacke = self.getLoadAttack(Sql.loadattack[i],cfg.language)
+          cp_multiplier = Sql.cp_multiplier[i]
+          level = self.getLevel(cp_multiplier)
 
-        if costume:
-          getcostume = "(" + costume + ")"
-        else:
-          getcostume = ""
+        # set form, costume, highlight
+        getform = "(" + form + ")" if form else ""
+        getcostume = "(" + costume + ")" if costume else ""
+        highlight = cfg.iv100 + " " if iv == 100 else (cfg.iv0 + " " if iv == 0 else "")
 
-        if(iv == 100):
-          highlight = cfg.iv100 + " "
-        elif(iv == 0):
-          highlight = cfg.iv0 + " "
-        else:
-          highlight = ""
-
+        # create list sorted by pokemon name
         if i == 0:
           poke = "\n<b>" + str(name) + str(getform) + str(getcostume) + ":</b>\n"
         else:
@@ -64,101 +77,152 @@ class createMessage():
           else:
             poke = ""          
 
-        # Costum  bolt_line/normal_line
-        bolt_line = str(highlight) + str(int(iv)) + "% " + str(name) + str(getform) + str(getcostume) + " " + self.getGeschlecht(Sql.gender[i]) + " (" + str(Sql.cp[i]) + ")" + str(zeit.strftime(" %H:%M:%S")) + verify
+        # Costum  bolt_line/normal_line for IV Pokemon
+        bolt_line = str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + weather_icon[weather_id] + self.getGeschlecht(Sql.gender[i]) + " (" + str(Sql.cp[i]) + ")" + str(zeit.strftime(" %H:%M:%S")) + verify
         normal_line = "L" + str(level) + " (" + str(angriff) + "/" + str(verteidigung) + "/" + str(leben) + ") " + str(kurzattacke) + "/" + str(ladeattacke)
         ###############################
 
-        if send.list_output.__contains__(encounter):
-          print("encounter_id: " + str(encounter) + " bereits gesendet")
-          f = open(cfg.areaName+"output.txt", "r")
-            # Split the string based on space delimiter 
-          list_string = f.read()
-          list_string = list_string[1:len(list_string)-1]
-          f.close()
-          list_string = list_string.split(', ') 
-          id = list_string[send.list_output.index(encounter)]
-          # Costum  Overview
-          if cfg.sort_pokemon == True:
-            overview += str(poke) + "<a href='" + cfg.ivchatUrl + "/" + str(id) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
-          else:
-            overview += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + cfg.ivchatUrl + "/" + str(id) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
-          new_pokemon +=1
-          old_pokemon +=1
-        else:
-          if not mode:
-            if ((iv >= self.iv or level >= self.level and not self.iv == 200) or iv == 0 and cfg.nuller == True):
-              id = send.send(bolt_line,normal_line,encounter,Sql.latitude[i],Sql.longitude[i])
-              # Costum  Overview
-              if cfg.sort_pokemon == True:
-                overview += str(poke) + "<a href='" + cfg.ivchatUrl + "/" + str(id) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
+        # Costum  bolt_line/normal_line for nonIV Pokemon
+        bolt_line_none = str(name) + str(getform) + str(getcostume) + weather_icon[weather_id] + str(zeit.strftime("%H:%M:%S")) + verify
+        normal_line_none = "noch keine IV Werte bekannt"
+        ###############################
+
+        if iv == 300:
+          bolt_line = bolt_line_none
+          normal_line = normal_line_none
+
+        # logging perfect pokemon
+        if isIV and iv == 100 and not encounter in send.list_output:
+          log_id    = str(Sql.pokemon_id[i]) + "  " 
+          log_name  = str(name) + "               "
+          log_iv    = str(iv) + "  "
+          log_wp    = str(Sql.cp[i]) + "   "
+          log_level = str(level) + " "
+          send.log100("Found PokemonID " + log_id[:3] + "   on " + str(last_mod.strftime('%Y-%m-%d %H:%M:%S')) + ":   " + log_name[:15] + "(" + log_iv[:3] + "%) " + log_wp[:4] + " WP" + "   Level " + log_level[:2] + "   ending " + str(zeit.strftime("%H:%M:%S")) + "   encounter_id " + str(encounter) + "\n", name)
+
+        for areas in cfg.channels:
+          if areas['Name'] not in overview:
+            overview[areas['Name']] = ""
+          if areas['Name'] not in trenner:
+            trenner[areas['Name']] = 0
+          if areas['Name'] not in new_pokemon:
+            new_pokemon[areas['Name']] = 0
+          if areas['Name'] not in old_pokemon:
+            old_pokemon[areas['Name']] = 0
+
+          # pokemon in geo fence
+          poly = Polygon(areas['fence'])
+          isIn = Point(Sql.latitude[i], Sql.longitude[i]).within(poly)
+
+          # get iv, level, mode
+          checkIV = self.getIV(Sql.pokemon_id[i],areas['Name'])
+          checkLevel = self.getLeveFromFile(Sql.pokemon_id[i],areas['Name'])
+          checkMode = self.getModeFromFile(Sql.pokemon_id[i],areas['Name'])
+
+          # update overview
+          if send.clear[areas['Name']]['encounter'].__contains__(encounter):
+            id = send.clear[areas['Name']]['encounter'].index(encounter)
+            linkid = send.clear[areas['Name']]['messageID'][id]
+
+            if isIV and send.clear[areas['Name']]['isIV'][id] == 0:
+              id = send.change(bolt_line,normal_line,encounter,Sql.latitude[i],Sql.longitude[i],areas['Name'],areas['ivchat_id'],linkid,id)
+
+            if cfg.sort_pokemon == True:
+              if iv == 300:
+                if trenner[areas['Name']] == 0:
+                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  trenner[areas['Name']] = 1
+                overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'></a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
               else:
-                overview += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + cfg.ivchatUrl + "/" + str(id) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
-              new_pokemon +=1
-          else:
-            if ((iv >= self.iv and level >= self.level and not self.iv == 200) or iv == 0 and cfg.nuller == True):
-              id = send.send(bolt_line,normal_line,encounter,Sql.latitude[i],Sql.longitude[i])
-              # Costum  Overview
-              if cfg.sort_pokemon == True:
-                overview += str(poke) + "<a href='" + cfg.ivchatUrl + "/" + str(id) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
+                overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
+            else:
+              if iv == 300:
+                if trenner[areas['Name']] == 0:
+                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  trenner[areas['Name']] = 1
+                overview[areas['Name']] += "<b><a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>" + str(highlight) + str(name) + str(getform) + str(getcostume) + "</a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
               else:
-                overview += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + cfg.ivchatUrl + "/" + str(id) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
-              new_pokemon +=1
+                overview[areas['Name']] += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
+            
+            new_pokemon[areas['Name']] +=1
+            old_pokemon[areas['Name']] +=1
+
+          # create overview
+          elif ((((iv >= checkIV or level >= checkLevel) and not checkMode and not iv == 300) or ((iv >= checkIV and level >= checkLevel) and checkMode and not iv == 300) or (iv == 0 and areas['nuller'] == True) or (checkIV == 300)) and isIn == True):
+            id = send.send(bolt_line,normal_line,encounter,Sql.latitude[i],Sql.longitude[i],areas['Name'],areas['ivchat_id'],isIV)
+            
+            if cfg.sort_pokemon == True:
+              if iv == 300:
+                if trenner[areas['Name']] == 0:
+                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  trenner[areas['Name']] = 1
+                overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(id) + "'></a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
+              else:
+                overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(id) + "'>" + str(highlight) + str(iv) + "% " + "L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(Sql.cp[i]) + "WP</a>" + str(zeit.strftime(" %H:%M:%S")) + verify + "\n"
+            else:
+              if iv == 300:
+                if trenner[areas['Name']] == 0:
+                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  trenner[areas['Name']] = 1
+                overview[areas['Name']] += "<b><a href='" + areas['ivchat_url'] + "/" + str(id) + "'>" + str(highlight) + str(name) + str(getform) + str(getcostume) + "</a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
+              else:
+                overview[areas['Name']] += "<b>" + str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + " " + str(Sql.cp[i]) + "WP, " + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n└ <a href='" + areas['ivchat_url'] + "/" + str(id) + "'>L" + str(level) + " (" + str(angriff) +"/"+ str(verteidigung)+"/"+str(leben)+ ") " + str(kurzattacke) + "/" + str(ladeattacke) +"</a>\n"
+            
+            new_pokemon[areas['Name']] +=1
+        
         i +=1
-      scanned = "\n" + self.getTranslate("from",cfg.language) + str(i) + self.getTranslate("scanned",cfg.language)
-      send.sendOverview(overview,scanned,new_pokemon,old_pokemon)
-      print("spawns: " + str(i))
+        if not encounter in send.last_encounter_id and isIV:
+          # add encounter to be skipped
+          send.last_encounter_id.append(encounter)
+      send.noiv = noIV
+      send.sendOverview(overview,new_pokemon,old_pokemon)
 
     except Exception as e:
-        outF = open(cfg.areaName+"error.txt","w")
+        outF = open("error.txt","w")
         ausgabe = "Passierte in der CreateMessage.py\n"
-        ausgabe += "encounter_id: " + str(Sql.encounter_id.__len__) + "\n"
-        ausgabe += "calc_endminsec: " + str(Sql.calc_endminsec.__len__) + "\n"
-        ausgabe += "pokemon_id: " + str(Sql.pokemon_id.__len__) + "\n"
-        ausgabe += "individual_attack: " + str(Sql.individual_attack.__len__) + "\n"
-        ausgabe += "individual_defense: " + str(Sql.individual_defense.__len__) + "\n"
-        ausgabe += "individual_stamina: " + str(Sql.individual_stamina.__len__) + "\n"
-        ausgabe += "disappear_time: " + str(Sql.disappear_time.__len__) + "\n"
-        ausgabe += "cp: " + str(Sql.cp.__len__) + "\n"
-        ausgabe += "cp_multiplier: " + str(Sql.cp_multiplier.__len__) + "\n"
-        ausgabe += "shortattack: " + str(Sql.shortattack.__len__) + "\n"
-        ausgabe += "loadattack: " + str(Sql.loadattack.__len__) + "\n"
-        ausgabe += "gender: " + str(Sql.gender.__len__) + "\n"
-        ausgabe += "longitude: " + str(Sql.longitude.__len__) + "\n"
-        ausgabe += "latitude: " + str(Sql.latitude.__len__) + "\n"
-        ausgabe += "Wert i = " + str(i) + "\n"
         outF.writelines(ausgabe + str(e))
         outF.close()
 
   ### get iv
-  def getIV(self,value):
-    f = open("iv-werte.txt", "r")
+  def getIV(self,value,area):
+    f = open(area+"/iv-werte.txt", "r")
     list_string = f.read()
     list_string = list_string.split(',') 
-    self.iv = int(list_string[value-1])  
-    self.getLevel(value)  
+    myiv = int(list_string[value-1]) 
+    try:
+      myiv = myiv
+    except:
+      myiv = 100
+    return myiv
 
   ### get level
-  def getLeveFromFile(self,value):
-    f = open("level-werte.txt", "r")
+  def getLeveFromFile(self,value,area):
+    f = open(area+"/level-werte.txt", "r")
     list_string = f.read()
     list_string = list_string.split(',') 
-    self.level = int(list_string[value-1])  
+    mylevel = int(list_string[value-1])  
+    try:
+      mylevel = mylevel
+    except:
+      mylevel = 36
+    return mylevel
 
   ### get mode
-  def getModeFromFile(self,value):
-    f = open("mode-werte.txt","r")
+  def getModeFromFile(self,value,area):
+    f = open(area+"/mode-werte.txt","r")
     list_string = f.read()
     list_string = list_string.split(',') 
-    self.mode = int(list_string[value-1])
+    mymode = int(list_string[value-1])
+    try:
+      mymode = mymode
+    except:
+      mymode = 0
+    return mymode
 
   ### get pokemon name
   def getPokemon(self,value,language):
     data = open('json/Pokemon.json').read()
     switch = json.loads(data)
-    self.getIV(value)
-    self.getLeveFromFile(value)
-    self.getModeFromFile(value)
     if not str(value) in switch:
       return switch["null"][language]
     else:
@@ -283,19 +347,3 @@ class createMessage():
         0.761564: 35
     }
     return switch.get(value,lambda: str(value))
-    
-  ### tranlate some other text
-  def getTranslate(self,value,language):
-    text = {
-      "from": {
-        "de": "(Von ",
-        "en": "(of ",
-        "fr": "(of "
-      },
-      "scanned": {
-        "de": " aktiv gescannten Pok\u00E9mon)",
-        "en": " actively scanned Pok\u00E9mon)",
-        "fr": " actively scanned Pok\u00E9mon)"
-      }
-    }
-    return text[value][language]

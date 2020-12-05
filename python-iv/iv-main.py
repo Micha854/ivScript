@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import importer
 import config
-import module
 import clear
+import module
 import sys
 import time
 
@@ -39,10 +38,10 @@ cfg = config.Config()
 try:
   cfg.readConfig(sys.argv[1])
 except:
-  cfg.readConfig("config.ini")
+  cfg.readConfig("config.json")
 
 clear = clear.Clear()
-clear.clear(cfg.token,cfg.ivchatId,cfg)
+clear.clear(cfg.token,cfg)
 
 modul = module.Module()
 modul.nuller(cfg,gmt)

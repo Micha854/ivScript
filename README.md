@@ -2,19 +2,23 @@
 
 #### HELP ON DISCORD: https://discord.gg/QYcR4cu
 
-## Install Telebot
+### this is the multi branch. you can configure several channels. the script automatically distributes the messages in the correct channels
+
+## Install requirements
 
 `pip3 -r install requirements.txt`
 
 ## Config
-`cp config_example.ini config.ini`
+`cp config_example.json config.json`
+
+put in here your channels. for the geofence for your channels, you can use `http://geo.jasparke.net/` and save the json file. than you can copy/paste the coordinates part into your config.json file
 
 ## Start
 `python3 iv-main.py`
 
 optional, you can put the config parameter
 
-`python3 iv-main.py myconfig.ini`
+`python3 iv-main.py myconfig.json`
 
 ## Notes
 

@@ -1,62 +1,38 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from configparser import ConfigParser
+import json
 
 ####Hier wird die Config aus dem Configfile geladen und den einzelen
 ####Werten zugewiesen
 
 class Config():
+  channels = ""
   host = ""
   database = ""
   user = ""
   password = ""
   token = ""
-  chatId = ""
-  chatUrl = ""
-  ivchatId = ""
-  ivchatUrl = ""
   language = ""
   sort_pokemon = bool
-  hours = ""
-  areaName = ""
-  min_latitude = ""
-  max_latitude = ""
-  min_longitude = ""
-  max_longitude = ""
   sleepTime = ""
-  nuller = bool
   iv100 = ""
   iv0 = ""
 
   def readConfig(self,cfgFile):  
-    parser = ConfigParser()
-    parser.read(cfgFile, encoding='utf-8')
+    with open(cfgFile, 'r') as config_file:
+      config = json.load(config_file)
 
-    self.host = parser.get('Mysql', 'host')
-    self.database = parser.get('Mysql', 'database')
-    self.user = parser.get('Mysql', 'user')
-    self.password = parser.get('Mysql', 'password')
+    self.channels = config['channels']
+    
+    self.host = config['mysql']['host']
+    self.database = config['mysql']['database']
+    self.user = config['mysql']['user']
+    self.password = config['mysql']['password']
 
-    self.token = parser.get('Bot Settings', 'token')
-    self.chatId = parser.get('Bot Settings', 'chat_id')
-    self.chatUrl = parser.get('Bot Settings', 'chat_url')
-    self.ivchatId = parser.get('Bot Settings', 'ivchat_id')
-    self.ivchatUrl = parser.get('Bot Settings', 'ivchat_url')
-
-    self.language = parser.get('Options', 'language')
-    self.sort_pokemon = (parser.getboolean("Options", "sort_pokemon"))
-    #self.hours = parser.get('Options', 'defineHours')
-
-    self.areaName = parser.get('Geofence', 'areaName')
-    self.min_latitude = parser.get('Geofence', 'minLat')
-    self.max_latitude = parser.get('Geofence', 'maxLat')
-    self.min_longitude = parser.get('Geofence', 'minLon')
-    self.max_longitude = parser.get('Geofence', 'maxLon')
-
-    self.sleepTime = parser.get('Message', 'sleep_time')
-
-    self.nuller = parser.getboolean('Modul','nuller')
-
-    self.iv100 = parser.get('IV', '100')
-    self.iv0 = parser.get('IV', '0')
+    self.token = config['settings']['token']
+    self.language = config['settings']['language']
+    self.sort_pokemon = config['settings']['sort_pokemon']
+    self.sleepTime = config['settings']['sleep_time']
+    self.iv100 = config['settings']['highlighting_100']
+    self.iv0 = config['settings']['highlighting_0']

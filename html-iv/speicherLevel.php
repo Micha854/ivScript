@@ -1,7 +1,7 @@
 <?php
 $q = $_REQUEST["q"];
 echo $q;
-$myfile = fopen("/var/www/vhosts/shisha-drive.de/httpdocs/html-iv/py/level-werte.txt", "w");
+$myfile = fopen("/var/www/level-werte.txt", "w");
 fwrite($myfile, $q);
 fclose($myfile);
 

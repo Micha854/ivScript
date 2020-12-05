@@ -1,0 +1,71 @@
+{
+  "mysql": {
+    "host": "localhost",
+    "database": "",
+    "user": "",
+    "password": ""
+  },
+  "settings":
+    {
+    "token": "",
+    "language": "de",
+    "sort_pokemon": false,
+    "sleep_time": 10,
+    "highlighting_100": "(!)",
+    "highlighting_0": "(_)"
+  },
+  "channels": [
+    {
+      "Name": "Channel_Name_1",
+      "fence": [
+        [
+          53.2390600179367,
+          9.7800194596761
+        ],
+        [
+          53.0380502327587,
+          9.7772728776448
+        ],
+        [
+          53.0380502327587,
+          10.2057396745198
+        ],
+        [
+          53.2456345839978,
+          10.2057396745198
+        ]
+      ],
+      "chat_id": "-100",
+      "chat_url": "https://t.me/c/",
+      "ivchat_id": "-100",
+      "ivchat_url": "https://t.me/c/",
+      "nuller": false
+    },
+    {
+      "Name": "Channel_Name_2",
+      "fence": [
+        [
+          53.2390600179367,
+          9.7800194596761
+        ],
+        [
+          53.0380502327587,
+          9.7772728776448
+        ],
+        [
+          53.0380502327587,
+          10.2057396745198
+        ],
+        [
+          53.2456345839978,
+          10.2057396745198
+        ]
+      ],
+      "chat_id": "-100",
+      "chat_url": "https://t.me/c/",
+      "ivchat_id": "-100",
+      "ivchat_url": "https://t.me/c/",
+      "nuller": false
+    }
+  ]
+}
