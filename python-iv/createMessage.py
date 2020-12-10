@@ -67,15 +67,12 @@ class createMessage():
         highlight = cfg.iv100 + " " if iv == 100 else (cfg.iv0 + " " if iv == 0 else "")
 
         # create list sorted by pokemon name
-        if i == 0:
-          poke = "\n<b>" + str(name) + str(getform) + str(getcostume) + ":</b>\n"
-        else:
-          if Sql.pokemon_id[i-1] != Sql.pokemon_id[i]:
-            poke = "\n<b>" + str(name) + str(getform) + str(getcostume) + ":</b>\n"
-          elif Sql.form[i-1] != Sql.form[i] or Sql.costume[i-1] != Sql.costume[i]:
-            poke = "\n<b>" + str(name) + str(getform) + str(getcostume) + ":</b>\n"
+        poke = "\n<b>" + str(name) + str(getform) + str(getcostume) + ":</b>\n"
+        if not i == 0:
+          if (Sql.pokemon_id[i-1] != Sql.pokemon_id[i]) or (Sql.form[i-1] != Sql.form[i] or Sql.costume[i-1] != Sql.costume[i]):
+            poke = poke
           else:
-            poke = ""          
+            poke = ""         
 
         # Costum  bolt_line/normal_line for IV Pokemon
         bolt_line = str(highlight) + str(iv) + "% " + str(name) + str(getform) + str(getcostume) + weather_icon[weather_id] + self.getGeschlecht(Sql.gender[i]) + " (" + str(Sql.cp[i]) + ")" + str(zeit.strftime(" %H:%M:%S")) + verify
@@ -84,7 +81,7 @@ class createMessage():
 
         # Costum  bolt_line/normal_line for nonIV Pokemon
         bolt_line_none = str(name) + str(getform) + str(getcostume) + weather_icon[weather_id] + str(zeit.strftime("%H:%M:%S")) + verify
-        normal_line_none = "noch keine IV Werte bekannt"
+        normal_line_none = self.getText("noIV_venue", cfg.language)
         ###############################
 
         if iv == 300:
@@ -130,7 +127,7 @@ class createMessage():
             if cfg.sort_pokemon == True:
               if iv == 300:
                 if trenner[areas['Name']] == 0:
-                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  overview[areas['Name']] += "\n\U0001F51C <b>" + self.getText("noIV",cfg.language) + "</b>\n"
                   trenner[areas['Name']] = 1
                 overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'></a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
               else:
@@ -138,7 +135,7 @@ class createMessage():
             else:
               if iv == 300:
                 if trenner[areas['Name']] == 0:
-                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  overview[areas['Name']] += "\n\U0001F51C <b>" + self.getText("noIV",cfg.language) + "</b>\n"
                   trenner[areas['Name']] = 1
                 overview[areas['Name']] += "<b><a href='" + areas['ivchat_url'] + "/" + str(linkid) + "'>" + str(highlight) + str(name) + str(getform) + str(getcostume) + "</a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
               else:
@@ -154,7 +151,7 @@ class createMessage():
             if cfg.sort_pokemon == True:
               if iv == 300:
                 if trenner[areas['Name']] == 0:
-                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  overview[areas['Name']] += "\n\U0001F51C <b>" + self.getText("noIV",cfg.language) + "</b>\n"
                   trenner[areas['Name']] = 1
                 overview[areas['Name']] += str(poke) + "<a href='" + areas['ivchat_url'] + "/" + str(id) + "'></a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
               else:
@@ -162,7 +159,7 @@ class createMessage():
             else:
               if iv == 300:
                 if trenner[areas['Name']] == 0:
-                  overview[areas['Name']] += "\n\U0001F51C <b>Noch ohne IV:</b>\n"
+                  overview[areas['Name']] += "\n\U0001F51C <b>" + self.getText("noIV",cfg.language) + "</b>\n"
                   trenner[areas['Name']] = 1
                 overview[areas['Name']] += "<b><a href='" + areas['ivchat_url'] + "/" + str(id) + "'>" + str(highlight) + str(name) + str(getform) + str(getcostume) + "</a>" + str(zeit.strftime(" %H:%M:%S")) + "</b>" + verify + "\n"
               else:
@@ -347,3 +344,19 @@ class createMessage():
         0.761564: 35
     }
     return switch.get(value,lambda: str(value))
+
+  ### tranlate some other text
+  def getText(self,value,language):
+    text = {
+      "noIV": {
+        "de": "Noch ohne IV:",
+        "en": "Still without IV:",
+        "fr": "Toujours sans IV:"
+      },
+      "noIV_venue": {
+        "de": "noch keine IV Werte bekannt",
+        "en": "no IV values known",
+        "fr": "aucune valeur IV connue"
+      }
+    }
+    return text[value][language]
